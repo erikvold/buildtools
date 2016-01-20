@@ -143,7 +143,7 @@ repo_types = OrderedDict((
 
 # [vcs:]value
 item_regexp = re.compile(
-  "^(?:(" + "|".join(map(re.escape, repo_types.keys())) +"):)?"
+  "^(?:(" + "|".join(map(re.escape, repo_types.keys())) + "):)?"
   "(.+)$"
 )
 
@@ -294,6 +294,11 @@ def resolve_deps(repodir, level=0, self_update=True, overrideroots=None, skipdep
 
   if overrideroots is not None:
     config["_root"] = overrideroots
+
+  # Run `npm install` if `package.json` exists
+  if os.path.exists(os.path.join(repodir, "package.json"))
+    logging.info("Updating npm dependencies...")
+    subprocess.Popen(["npm", "install"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=repodir).communicate()[0]
 
   for dir, sources in config.iteritems():
     if (dir.startswith("_") or
