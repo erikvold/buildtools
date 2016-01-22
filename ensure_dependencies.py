@@ -296,7 +296,7 @@ def resolve_deps(repodir, level=0, self_update=True, overrideroots=None, skipdep
     config["_root"] = overrideroots
 
   # Run `npm install` if `package.json` exists
-  if os.path.exists(os.path.join(repodir, "package.json"))
+  if os.path.exists(os.path.join(repodir, "package.json")):
     logging.info("Updating npm dependencies...")
     subprocess.Popen(["npm", "install"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=repodir).communicate()[0]
 
