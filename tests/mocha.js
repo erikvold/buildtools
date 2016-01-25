@@ -8,11 +8,11 @@ var mocha = new Mocha({
 });
 
 [
-  require.resolve("./filter/test-filter-class.js")
+  require.resolve("./prefs/test-prefs.js")
 ].sort().forEach(filepath => {
   filepath && mocha.addFile(filepath);
 })
 
-mocha.run(function (failures) {
+mocha.run(failures => {
   process.exit(failures);
 });

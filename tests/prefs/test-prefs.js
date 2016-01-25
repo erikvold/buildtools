@@ -4,8 +4,8 @@
 var chai = require("chai");
 var expect = chai.expect;
 
-describe("Test Prefs", function () {
-  it("Basic", function(done) {
+describe("Test Prefs", () => {
+  it("Basic", () => {
     expect(true).to.be.equal(true);
   })
 });
